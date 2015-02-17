@@ -14,8 +14,7 @@ To run create a ```users.json``` file in the root with your users names and loca
 }]
 ```
 
-Then create a themes directory and put in potential entry music based on the names. Eg. for jack you would create a directory:
-```themes/Jack/```
+Then create a themes directory and put in potential entry music based on the names. Eg. for jack you would create a directory: **themes/Jack/**
 
 and put any mp3s you want in there
 

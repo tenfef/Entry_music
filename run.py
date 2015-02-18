@@ -4,6 +4,7 @@ import datetime
 import random
 import glob
 import json
+import sys
 from easyprocess import Proc
 
 
@@ -31,7 +32,7 @@ def greet(user):
 	stdout=Proc(cmd).call(timeout=10).stdout
 
 def log(message):
-	print message
+	#print message
 	pass	
 
 def song_for_user(user):
@@ -53,6 +54,18 @@ def play_song(user):
 	print "playing {0}".format(file_to_play)	
 	stdout=Proc(["afplay", file_to_play]).call(timeout=10).stdout	
 
+def update_console_status(users):
+	string=""
+	for user in users:				
+		last_seen = user['last_seen'] if 'last_seen' in user else "never"
+		confirmed_not_there = user['confirmed_not_there'] if 'confirmed_not_there' in user else True
+		not_here_string = last_seen if 'confirmed_not_there' in user else "%%%%%%"
+		here_or_not = not_here_string if confirmed_not_there  else "Here"
+		string="| {0}: {1} {2}".format(user['name'], here_or_not, string)
+		string = "{0}                   ".format(string)
+	sys.stdout.write("\r{0}".format(string))
+	sys.stdout.flush()
+
 
 def should_play_song(user, start_time):
 	# If we haven't confirmed they aren't there, then don't play
@@ -71,7 +84,7 @@ def should_play_song(user, start_time):
 			return False
 
 	# if last seen is set and it's older than 15 mins return true
-	time_ago=15
+	time_ago=10
 	distant_time=datetime.datetime.now() - datetime.timedelta(minutes=time_ago)
 	if user['last_seen'] < distant_time:
 		log("{0} was last seen more than {1} mins ago".format(user['name'], time_ago))
@@ -84,6 +97,7 @@ def should_play_song(user, start_time):
 
 users = load_users()
 start_time = datetime.datetime.now()
+update_console_status(users)
 
 while 1:
 	for user in users:
@@ -106,8 +120,10 @@ while 1:
 				user['confirmed_not_there'] = True
 				last_seen = user['last_seen'] if 'last_seen' in user else "never"
 				log("User: {0} is NotReachable. last seen: {1}".format(user['name'], last_seen))
+			update_console_status(users)
+			
 		except subprocess.CalledProcessError,e:
 		   print "ERROR {0}".format(e)
 		else:
 		   pass
-
+	

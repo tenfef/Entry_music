@@ -1,0 +1,4 @@
+{ 
+	'audio_player' : "afplay",
+	'song_timeout' : 15
+}	

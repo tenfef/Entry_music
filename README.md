@@ -1,4 +1,4 @@
-# Entry_music
+# Entry Music 
 A python script to run entry music based on IPs entering the network.
 It's important to lock the DHCP settings for each users MAC address on your router to make sure every time they leave or enter the network they have the same IP.
 

@@ -1,4 +1,4 @@
-{ 
-	'audio_player' : "afplay",
-	'song_timeout' : 15
+{ 	
+	"song_timeout_secs" : 15,
+	"away_timeout_mins" : 8
 }	

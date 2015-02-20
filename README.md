@@ -28,7 +28,7 @@ To run create a ```users.json``` file in the root with your users names and loca
 
 Then create a themes directory and put in potential entry music based on the names. Eg. for jack you would create a directory: **themes/Jack/**
 
-and put any mp3s you want in there
+and put any song files in standard formats that you want in there for each user. mp3s, mp4as etc.
 
 Currently tested on Mac OS X
 

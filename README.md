@@ -19,3 +19,11 @@ Then create a themes directory and put in potential entry music based on the nam
 and put any mp3s you want in there
 
 Currently tested on Mac OS X
+
+Edit config.json to overide these settings
+```
+{ 	
+	"song_timeout_secs" : 15,
+	"away_timeout_mins" : 8
+}
+```

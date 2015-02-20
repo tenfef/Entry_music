@@ -2,12 +2,14 @@
 
 ![](http://i.imgur.com/sIMR3FW.png)
 
-A python script to run entry music based on IPs entering/exiting the network.
+A python script to run entry music based on IPs entering/exiting the network. 
 
-# Limitations
+## Limitations
 In order for this to work each IP needs to be static so that it won't change the next time it connects to the network. A simple way to do this is lock a device to an IP using the routers DHCP settings. Alternatively you can set a static IP in the devices wifi settings.
 
-#installation
+This has been tested to work on Mac OS X and a Raspberry Pi
+
+## Installation
 Download the repository and run ```pip install``    
 
 run: ```python run.py``` to run

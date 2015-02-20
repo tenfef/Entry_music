@@ -1,8 +1,18 @@
 # Entry Music 
-A python script to run entry music based on IPs entering the network.
-It's important to lock the DHCP settings for each users MAC address on your router to make sure every time they leave or enter the network they have the same IP.
 
-To run create a ```users.json``` file in the root with your users names and local IP addresses eg:
+![](http://i.imgur.com/sIMR3FW.png)
+
+A python script to run entry music based on IPs entering/exiting the network.
+
+# Limitations
+In order for this to work each IP needs to be static so that it won't change the next time it connects to the network. A simple way to do this is lock a device to an IP using the routers DHCP settings. Alternatively you can set a static IP in the devices wifi settings.
+
+#installation
+Download the repository and run ```pip install``    
+
+run: ```python run.py``` to run
+
+To run create a ```users.json``` file in the root with your users names and local static IP addresses eg:
 ```
 [{
 	"name" : "Jack",

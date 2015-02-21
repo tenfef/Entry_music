@@ -32,6 +32,8 @@ Then create a themes directory and put in potential entry music based on the nam
 and put any song files in standard formats that you want in there for each user. mp3s, mp4as etc.
 If there are multiple songs in the folder it will pick one at random.
 
+### Config
+
 Edit ``config.json`` to overide these settings
 ```
 { 	

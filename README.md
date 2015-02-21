@@ -1,8 +1,21 @@
 # Entry Music 
-A python script to run entry music based on IPs entering the network.
-It's important to lock the DHCP settings for each users MAC address on your router to make sure every time they leave or enter the network they have the same IP.
 
-To run create a ```users.json``` file in the root with your users names and local IP addresses eg:
+![](http://i.imgur.com/sIMR3FW.png)
+
+A python script to run entry music based on IPs entering/exiting the network. 
+
+## Limitations
+In order for this to work each IP needs to be static so that it won't change the next time it connects to the network. A simple way to do this is lock a device to an IP using the routers DHCP settings. Alternatively you can set a static IP in the devices wifi settings.
+
+This has been tested to work on Mac OS X and a Raspberry Pi
+
+## Installation
+Download the repository and run 
+``pip install -r stable-req.txt``    
+
+run: ```python run.py``` to run
+
+To run create a ```users.json``` file in the root with your users names and local static IP addresses eg:
 ```
 [{
 	"name" : "Jack",
@@ -16,6 +29,14 @@ To run create a ```users.json``` file in the root with your users names and loca
 
 Then create a themes directory and put in potential entry music based on the names. Eg. for jack you would create a directory: **themes/Jack/**
 
-and put any mp3s you want in there
+and put any song files in standard formats that you want in there for each user. mp3s, mp4as etc.
 
 Currently tested on Mac OS X
+
+Edit config.json to overide these settings
+```
+{ 	
+	"song_timeout_secs" : 15,
+	"away_timeout_mins" : 8
+}
+```

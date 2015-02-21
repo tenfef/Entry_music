@@ -10,17 +10,25 @@ import time
 from easyprocess import Proc
 from threading import Timer
 
-class EntryMusic:
+class EntryMusic:	
 	
 	def __init__(self):	    
 
+		self.default_config = {
+			'away_timeout_mins' : 8,
+			'song_timeout_secs' : 15
+		}
+
 		self.config = self.load_json('config.json')
 
+		if not self.config:
+			self.config = self.default_config
+
 		if not 'song_timeout_secs' in self.config:
-			sys.exit("song_timeout_secs not set in config")
+			self.config['song_timeout_secs'] = self.default_config['song_timeout_secs']
 
 		if not 'away_timeout_mins' in self.config:
-			sys.exit("away_timeout_mins not set in config")
+			self.config['away_timeout_mins'] = self.default_config['away_timeout_mins']
 
 		self.users = self.load_json('users.json')
 		self.start_time = datetime.datetime.now()	    
@@ -136,14 +144,14 @@ class EntryMusic:
 		# If we have confirmed they were previously not there and last_seen isn't set then play
 		if not 'last_seen' in user:
 			# Did we just restart the script?		
-			five_mins_ago=datetime.datetime.now() - datetime.timedelta(minutes=5)
+			five_mins_ago=datetime.datetime.now() - datetime.timedelta(minutes=self.config['away_timeout_mins'])
 			if five_mins_ago > self.start_time:
 				return True
 			else:
 				self.log("{0} was never seen but we just restarted the script".format(user['name']))
 				return False
 
-		# if last seen is set and it's older than 15 mins return true
+		# if last seen is set and it's older than timeout return true
 		time_ago=self.config['away_timeout_mins']
 		distant_time=datetime.datetime.now() - datetime.timedelta(minutes=time_ago)
 		if user['last_seen'] < distant_time:

@@ -10,7 +10,8 @@ In order for this to work each IP needs to be static so that it won't change the
 This has been tested to work on Mac OS X and a Raspberry Pi
 
 ## Installation
-Download the repository and run ``pip install``    
+Download the repository and run 
+``pip install -r stable-req.txt``    
 
 run: ```python run.py``` to run
 

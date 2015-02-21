@@ -44,3 +44,6 @@ Edit ``config.json`` to overide these settings
 
 ``song_timeout_secs`` is the number of seconds the songs will play before they are cut off.
 
+
+This project was inspired by Karl von Randow's setup at Cactus Lab as described here:
+http://blog.xk72.com/post/13313246225/the-coolest-thing-ever
